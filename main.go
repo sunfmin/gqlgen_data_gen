@@ -33,13 +33,14 @@ func main() {
 	} else if err != nil {
 		panic(err)
 	}
-	
-	schema, _, err := cfg.LoadSchema()
+
+	err = cfg.LoadSchema()
 	if err != nil {
 		panic(err)
 	}
 
-	binder, err := cfg.NewBinder(schema)
+	binder := cfg.NewBinder()
+	schema := cfg.Schema
 
 	it := &Object{
 		Name: "Data",
